@@ -1,8 +1,8 @@
 # cloud-system
 
-A semi multi-platform, persistent cloud system with console interface on which
-you can upload binary files and runtime environments.
+A multi-platform, persistent, semi cloud system with console interface, on which
+can be uploaded binary files and runtime environments.
 
-Ability of creating tasks on the cloud, that consist of a binary and a runtime. 
+Ability of creating tasks on the cloud, from a binary and a runtime. 
 
 These tasks can be executed multiple times thus spawning new processes that can be managed. 
