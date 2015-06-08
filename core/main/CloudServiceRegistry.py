@@ -1,7 +1,7 @@
 __author__ = 'Lubo'
 
 
-class CloudSystemRegistry:
+class CloudServiceRegistry:
     def __init__(self):
         self.binary_manager = None
         self.task_manager = None

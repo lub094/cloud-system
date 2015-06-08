@@ -1,5 +1,4 @@
 __author__ = 'Lubo'
 
-
-class Main:
+class MainTest:
     pass
