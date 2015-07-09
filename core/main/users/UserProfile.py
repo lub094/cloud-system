@@ -1,8 +1,6 @@
 import hashlib
 import uuid
 
-__author__ = 'Lubo'
-
 
 class UserProfile:
     def __init__(self, username="", password="", roles=[]):

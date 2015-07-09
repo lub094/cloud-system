@@ -5,8 +5,6 @@ from users.UserExecutionError import UserExecutionError
 from users.UserProfile import UserProfile
 from users.UserValidationError import UserValidationError
 
-__author__ = 'Lubo'
-
 
 class UserManager:
     CREATION_FAIL_MESSAGE = 'User creation failed: '
@@ -15,35 +13,9 @@ class UserManager:
     AUTHENTICATION_FAIL_MESSAGE = 'User authentication failed: '
     VALIDATION_FAIL_MESSAGE = 'User validation failed: '
 
-    def __init__(self):
-        self.__binaries_location = ""
-        self.__cloud_service_registry = None
-        self.__file_persistence_manager = None
-        self.__data_persistence_manager = None
-
-    def get_binary(self):
-        pass
-
-    def get_all_binaries(self):
-        pass
-
-    def used_by_a_task(self):
-        pass
-
-    def delete_binary(self):
-        pass
-
-    def deploy_binary(self):
-        pass
-
-    def create_binary(self):
-        pass
-
-    def get_binary_file(self):
-        pass
-
-    def get_repository_location(self):
-        pass
+    def __init__(self, data_persistence_manager, cloud_service_registry):
+        self.__data_persistence_manager = data_persistence_manager
+        self.__cloud_service_registry = cloud_service_registry
 
     def add_roles_to_user(self, username, roles):
         user = self.read_user(username)
@@ -53,9 +25,9 @@ class UserManager:
             return self.__data_persistence_manager.update_element(username,
                                                                   user)
         except PersistenceValidationError as e:
-            raise UserValidationError(e.message)
+            raise UserValidationError(str(e))
         except PersistenceExecutionError as e:
-            raise UserExecutionError(e.message)
+            raise UserExecutionError(str(e))
 
     def remove_roles_from_user(self, username, roles):
         user = self.read_user(username)
@@ -64,17 +36,17 @@ class UserManager:
         try:
             self.__data_persistence_manager.update_element(username, user)
         except PersistenceValidationError as e:
-            raise UserValidationError(e.message)
+            raise UserValidationError(str(e))
         except PersistenceExecutionError as e:
-            raise UserExecutionError(e.message)
+            raise UserExecutionError(str(e))
 
     def read_user(self, username):
         try:
             return self.__data_persistence_manager.read_element(username)
         except PersistenceValidationError as e:
-            raise UserValidationError(e.message())
+            raise UserValidationError(str(e))
         except PersistenceExecutionError as e:
-            raise UserExecutionError(e.message())
+            raise UserExecutionError(str(e))
 
     def change_user_password(self, username, password):
         user = self.read_user(username)
@@ -84,9 +56,9 @@ class UserManager:
             return self.__data_persistence_manager.update_element(username,
                                                                   user)
         except PersistenceValidationError as e:
-            raise UserValidationError(e.message)
+            raise UserValidationError(str(e))
         except PersistenceExecutionError as e:
-            raise UserExecutionError(e.message)
+            raise UserExecutionError(str(e))
 
     def create_user(self, username, password, roles):
         try:
@@ -103,12 +75,14 @@ class UserManager:
                     PersistenceValidationError,
                     PersistenceExecutionError) as e:
                 raise UserExecutionError(
-                    self.CREATION_FAIL_MESSAGE + e.message)
+                    self.CREATION_FAIL_MESSAGE + str(e))
 
-            raise UserValidationError(
-                self.CREATION_FAIL_MESSAGE + "user already exists.")
+        raise UserValidationError(
+            self.CREATION_FAIL_MESSAGE + "user already exists.")
 
+    # TODO: implement
     def _user_is_owner(self, username):
+        user = self.read_user(username)
         return False
 
     def delete_user(self, username):
@@ -121,19 +95,19 @@ class UserManager:
         try:
             return self.__data_persistence_manager.delete_element(username)
         except PersistenceValidationError as e:
-            raise UserValidationError(e.message)
+            raise UserValidationError(str(e))
         except PersistenceExecutionError as e:
             raise UserExecutionError(
-                self.DELETION_FAIL_MESSAGE + e.message)
+                self.DELETION_FAIL_MESSAGE + str(e))
 
     def get_all_users(self):
         try:
             return self.__data_persistence_manager.get_all_elements()
         except PersistenceValidationError as e:
-            raise UserValidationError(e.message)
+            raise UserValidationError(str(e))
         except PersistenceExecutionError as e:
             raise UserExecutionError(
-                self.ROLE_REMOVAL_FAIL_MESSAGE + e.message)
+                self.ROLE_REMOVAL_FAIL_MESSAGE + str(e))
 
     def set_user_roles(self, username, roles):
         user = self.read_user(username)
@@ -142,14 +116,13 @@ class UserManager:
         try:
             self.__data_persistence_manager.update_element(username, user)
         except PersistenceValidationError as e:
-            raise UserValidationError(e.message)
+            raise UserValidationError(str(e))
         except PersistenceExecutionError as e:
             raise UserExecutionError(
-                self.ROLE_REMOVAL_FAIL_MESSAGE + e.message)
+                self.ROLE_REMOVAL_FAIL_MESSAGE + str(e))
 
     def verify_user_rights(self, username, password, role):
         user = self.read_user(username)
-        user = UserProfile()
         if not user.validate_password(password):
             raise UserAuthenticationError(
                 self.AUTHENTICATION_FAIL_MESSAGE + 'Incorrect password.')
