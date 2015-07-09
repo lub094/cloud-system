@@ -4,4 +4,6 @@ __author__ = 'Lubo'
 
 
 class WindowsCloudServiceRegistry(CloudServiceRegistry):
-    pass
+    @staticmethod
+    def say_hello():
+        print("Hello from the Windows cloud system!")

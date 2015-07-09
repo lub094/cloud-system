@@ -11,3 +11,4 @@ class CloudServiceRegistry:
 
     def get_temporary_files_directory(self):
         return self.temporary_files_directory
+

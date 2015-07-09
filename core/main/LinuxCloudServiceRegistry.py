@@ -4,4 +4,6 @@ __author__ = 'Lubo'
 
 
 class LinuxCloudServiceRegistry(CloudServiceRegistry):
-    pass
+    @staticmethod
+    def say_hello():
+        print("Hello from the Linux cloud system!")
