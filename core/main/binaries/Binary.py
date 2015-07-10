@@ -1,4 +1,5 @@
 class Binary:
+
     def __init__(self, id_, description, owner, file_extension, is_web_binary):
         self.__id = id_
         self.__description = description
