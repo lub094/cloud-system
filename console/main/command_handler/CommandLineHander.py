@@ -1,7 +1,5 @@
-__author__ = 'Lubo'
-
-
 class CommandLineHandler:
+
     def __init__(self):
         self.commands = None
 
