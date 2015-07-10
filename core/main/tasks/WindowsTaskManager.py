@@ -119,7 +119,7 @@ class WindowsTaskManager:
         try:
             return self.__data_persistence_manager.get_all_elements()
         except PersistenceExecutionError as e:
-            raise TaskExecutionError(str(e))
+            raise TaskExecutionError('Could not get tasks: ' + str(e))
 
     def run_task(self, task_id, args, user):
         task = self.read_task(task_id)

@@ -19,4 +19,3 @@ class LinuxProcessManager(ProcessManager):
 
     def kill_process(self):
         pass
-

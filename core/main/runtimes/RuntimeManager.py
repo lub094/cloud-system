@@ -61,8 +61,7 @@ class RuntimeManager:
         return source_file
 
     def _get_next_id(self):
-        self.__runtimes_id_counter += 1
-        return self.__runtimes_id_counter
+        return ++self.__runtimes_id_counter
 
     def _get_runtime_file_name(self, runtime):
         return Constants.RUNTIME_FILE_FORMAT.format(runtime.get_id(),
