@@ -1,0 +1,2 @@
+class RuntimeValidationError(Exception):
+    pass

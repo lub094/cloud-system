@@ -4,6 +4,7 @@ from persistence.PersistenceExecutionError import PersistenceExecutionError
 from binaries.BinaryExecutionError import BinaryExecutionError
 from tasks import TaskExecutionError
 from binaries.BinaryValidationError import BinaryValidationError
+from persistence.FilePersistenceManager import FilePersistenceManager
 
 
 class BinaryManager:
@@ -13,11 +14,12 @@ class BinaryManager:
     _DELETE_FAIL_MESSAGE = 'Binary deletion failed: '
 
     def __init__(self, data_persistence_manager, binaries_location,
-                 cloud_service_registry, file_persistence):
+                 cloud_service_registry):
         self.__binaries_location = binaries_location
         self.__cloud_service_registry = cloud_service_registry
         self.__data_persistence_manager = data_persistence_manager
-        self.__file_persistence_manager = file_persistence
+        self.__file_persistence_manager = FilePersistenceManager(
+            binaries_location)
 
     def _get_binary_file_name(self, binary):
         return Constants.BINARY_FILE_FORMAT.format(
