@@ -1,0 +1,2 @@
+class BinaryValidationError(Exception):
+    pass
