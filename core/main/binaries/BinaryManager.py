@@ -29,7 +29,7 @@ class BinaryManager:
     def _update_binary_file(self, binary, source_file):
         try:
             binary_source_file_name = self._get_binary_file_name(binary)
-            reversible_operation = self.__file_persistence_manager.\
+            reversible_operation = self.__file_persistence_manager. \
                 create_reversible_operation()
 
             reversible_operation.update_element(binary_source_file_name)
@@ -60,7 +60,7 @@ class BinaryManager:
     def _create_binary(self, binary, source_file):
         try:
             destination_file = self._get_binary_file_name(binary)
-            reversible_operation = self.__file_persistence_manager.\
+            reversible_operation = self.__file_persistence_manager. \
                 create_reversible_operation()
 
             reversible_operation.create_element(destination_file)
@@ -82,11 +82,11 @@ class BinaryManager:
         except PersistenceValidationError as e:
             raise BinaryValidationError(self._READ_FAIL_MESSAGE + str(e))
         except PersistenceExecutionError as e:
-            raise BinaryExecutionError(self.READ_FAIL_MESSAGE + str(e))
+            raise BinaryExecutionError(self._READ_FAIL_MESSAGE + str(e))
 
     def delete_binary(self, binary_id, user):
         try:
-            binary = self._read_binary(binary_id)
+            binary = self.read_binary(binary_id)
 
             if binary.get_username() != user:
                 raise BinaryValidationError(self._DELETE_FAIL_MESSAGE +
@@ -94,11 +94,11 @@ class BinaryManager:
                                             their owner.')
 
             if self._used_by_task(binary_id):
-                raise BinaryValidationError(self._DELETION_FAIL_MESSAGE +
+                raise BinaryValidationError(self._DELETE_FAIL_MESSAGE +
                                             'Can\'t delete binary that is a \
                                             part of a task')
             binary_file_name = self._get_binary_file_name(binary)
-            reversible_operation = self.__file_persistence_manager.\
+            reversible_operation = self.__file_persistence_manager. \
                 create_reversible_operation(binary_file_name)
 
             reversible_operation.delte_element()
@@ -118,7 +118,7 @@ class BinaryManager:
         source_file = open(source_file_name, 'r')
 
         try:
-            target_binary = self._read_binary(binary_id)
+            target_binary = self.read_binary(binary_id)
 
             if target_binary.get_owner() is not owner:
                 raise BinaryValidationError('Binaries can only be updated by \
