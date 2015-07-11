@@ -1,14 +1,16 @@
-from Constants import Constants
-from asyncio.tasks import Task
-from persistence.PersistenceExecutionError import PersistenceExecutionError
-from tasks import TaskExecutionError, TaskValidationError
-from persistence.PersistenceValidationError import PersistenceValidationError
+from core.main.Constants import Constants
+from core.main.tasks import Task
+from core.main.persistence.PersistenceExecutionError import \
+    PersistenceExecutionError
+from core.main.tasks import TaskExecutionError, TaskValidationError
+from core.main.persistence.PersistenceValidationError import \
+    PersistenceValidationError
+from core.main.binaries.BinaryValidationError import BinaryValidationError
+from core.main.runtimes.RuntimeValidationError import RuntimeValidationError
+from core.main.binaries.BinaryExecutionError import BinaryExecutionError
+from core.main.runtimes.RuntimeExecutionError import RuntimeExecutionError
+from core.main.processes.ProcessExecutionError import ProcessExecutionError
 import os
-from binaries.BinaryValidationError import BinaryValidationError
-from runtimes.RuntimeValidationError import RuntimeValidationError
-from binaries.BinaryExecutionError import BinaryExecutionError
-from runtimes.RuntimeExecutionError import RuntimeExecutionError
-from processes.ProcessExecutionError import ProcessExecutionError
 
 
 class WindowsTaskManager:
@@ -46,7 +48,6 @@ class WindowsTaskManager:
         return ++self.__task_id_counter
 
     def _generate_script(self, task):
-        # TODO: finish last
         pass
 
     def create_task(self, runtime_id, binary_id, owner):
@@ -128,8 +129,6 @@ class WindowsTaskManager:
             raise TaskValidationError('Tasks can only be started by their \
             owner.')
 
-        # TODO: finish last
-
     def update_task(self, task_id, runtime_id, binary_id, user):
         try:
             runtime = self.__runtime_manager.read_runtime(runtime_id)
@@ -170,3 +169,4 @@ class WindowsTaskManager:
         except (RuntimeExecutionError, BinaryExecutionError) as e:
             raise TaskExecutionError(self._UPDATE_FAIL_MESSAGE +
                                      'Data could not be read.')
+

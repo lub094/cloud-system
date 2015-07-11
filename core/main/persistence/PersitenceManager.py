@@ -1,7 +1,5 @@
-__author__ = 'Lubo'
-
-
 class PersistenceManager:
+
     def create_element(self):
         pass
 

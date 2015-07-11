@@ -1,9 +1,11 @@
-from persistence.PersistenceExecutionError import PersistenceExecutionError
-from persistence.PersistenceValidationError import PersistenceValidationError
-from users.UserAuthenticationError import UserAuthenticationError
-from users.UserExecutionError import UserExecutionError
-from users.UserProfile import UserProfile
-from users.UserValidationError import UserValidationError
+from core.main.persistence.PersistenceExecutionError import \
+    PersistenceExecutionError
+from core.main.persistence.PersistenceValidationError import \
+    PersistenceValidationError
+from core.main.users.UserAuthenticationError import UserAuthenticationError
+from core.main.users.UserExecutionError import UserExecutionError
+from core.main.users.UserProfile import UserProfile
+from core.main.users.UserValidationError import UserValidationError
 
 
 class UserManager:
@@ -80,10 +82,8 @@ class UserManager:
         raise UserValidationError(
             self._CREATION_FAIL_MESSAGE + "user already exists.")
 
-    # TODO: implement soon
     def _user_is_owner(self, username):
-        user = self.read_user(username)
-        return False
+        pass
 
     def delete_user(self, username):
         if self._user_is_owner(username):

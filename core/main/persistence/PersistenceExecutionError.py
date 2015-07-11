@@ -1,7 +1,2 @@
-from persistence.PersistenceError import PersistenceError
-
-__author__ = 'Lubo'
-
-
-class PersistenceExecutionError(PersistenceError):
+class PersistenceExecutionError(Exception):
     pass

@@ -1,9 +1,8 @@
-from persistence.PersitenceManager import PersistenceManager
-
-__author__ = 'Lubo'
+from core.main.persistence.PersitenceManager import PersistenceManager
 
 
 class DataPersistenceManager(PersistenceManager):
+
     def __init__(self):
         self.entity_manager = None
 

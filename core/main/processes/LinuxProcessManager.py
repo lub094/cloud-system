@@ -1,9 +1,5 @@
-from processes.ProcessManager import ProcessManager
+class LinuxProcessManager:
 
-__author__ = 'Lubo'
-
-
-class LinuxProcessManager(ProcessManager):
     def __init__(self):
         self.persistence_manager = None
         self.temp_files_directory = ""

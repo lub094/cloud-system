@@ -1,10 +1,11 @@
-from Constants import Constants
-from persistence import PersistenceValidationError
-from persistence.PersistenceExecutionError import PersistenceExecutionError
-from binaries.BinaryExecutionError import BinaryExecutionError
-from tasks import TaskExecutionError
-from binaries.BinaryValidationError import BinaryValidationError
-from persistence.FilePersistenceManager import FilePersistenceManager
+from core.main.Constants import Constants
+from core.main.persistence import PersistenceValidationError
+from core.main.persistence.PersistenceExecutionError import \
+    PersistenceExecutionError
+from core.main.binaries.BinaryExecutionError import BinaryExecutionError
+from core.main.tasks import TaskExecutionError
+from core.main.binaries.BinaryValidationError import BinaryValidationError
+from core.main.persistence.FilePersistenceManager import FilePersistenceManager
 
 
 class BinaryManager:

@@ -2,10 +2,11 @@ import hashlib
 import uuid
 
 
-class UserProfile:
-    def __init__(self, username="", password="", roles=[]):
+class UserProfile(object):
+
+    def __init__(self, username='', password='', roles=[]):
         self.__username = username
-        self.__password = password
+        self.__password = self.__hash_password(password)
         self.__roles = roles
 
     def add_role(self, role):

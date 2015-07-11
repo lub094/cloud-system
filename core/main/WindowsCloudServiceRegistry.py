@@ -1,4 +1,4 @@
-from CloudServiceRegistry import CloudServiceRegistry
+from core.main.CloudServiceRegistry import CloudServiceRegistry
 
 
 class WindowsCloudServiceRegistry(CloudServiceRegistry):

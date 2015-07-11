@@ -1,5 +1,6 @@
-from processes.ProcessExecutionError import ProcessExecutionError
-from persistence.PersistenceExecutionError import PersistenceExecutionError
+from core.main.processes.ProcessExecutionError import ProcessExecutionError
+from core.main.persistence.PersistenceExecutionError import \
+    PersistenceExecutionError
 
 
 class WindowsProcessManager:
@@ -16,7 +17,6 @@ class WindowsProcessManager:
         self.temp_files_directory = temp_files_directory
 
     def _get_standard_app_pid(self):
-        # TODO: finish last
         pass
 
     def get_active_processes(self):

@@ -1,12 +1,14 @@
-from persistence.FilePersistenceManager import FilePersistenceManager
-from tasks import TaskExecutionError
-from runtimes.RuntimeExecutionError import RuntimeExecutionError
+from core.main.persistence.FilePersistenceManager import FilePersistenceManager
+from core.main.tasks import TaskExecutionError
+from core.main.runtimes.RuntimeExecutionError import RuntimeExecutionError
+from core.main.runtimes.RuntimeValidationError import RuntimeValidationError
+from core.main.persistence.PersistenceValidationError import \
+    PersistenceValidationError
+from core.main.persistence.PersistenceExecutionError import \
+    PersistenceExecutionError
+from core.main.runtimes.Runtimes import Runtime
+from core.main.Constants import Constants
 from os.path import isfile
-from runtimes.RuntimeValidationError import RuntimeValidationError
-from persistence.PersistenceValidationError import PersistenceValidationError
-from persistence.PersistenceExecutionError import PersistenceExecutionError
-from runtimes.Runtimes import Runtime
-from Constants import Constants
 import os
 
 
