@@ -15,13 +15,12 @@ class TaskMock:
 
 class TestProcess(unittest.TestCase):
 
-    pid = 1
-    description = 'description'
-    runtime_location = 'location'
-    task = TaskMock  # Mock Task through a framework
-    port = 0
-
     def setUp(self):
+        self.pid = 1
+        self.description = 'description'
+        self.runtime_location = 'location'
+        self.task = TaskMock  # Mock Task through a framework
+        self.port = 0
         self.process = Process(None, None, None, None, None)
 
     def tearDown(self):

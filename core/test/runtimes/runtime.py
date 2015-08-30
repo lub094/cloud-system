@@ -7,11 +7,10 @@ from core.main.runtimes.runtime import Runtime
 
 class TestRuntime(unittest.TestCase):
 
-    id = 1
-    description = 'description'
-    owner = 'some owner'  # create a mock owner
-
     def setUp(self):
+        self.id = 1
+        self.description = 'description'
+        self.owner = 'some owner'  # create a mock owner
         self.runtime = Runtime(None, None, None)
 
     def tearDown(self):

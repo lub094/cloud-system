@@ -8,11 +8,10 @@ import unittest
 
 class TestUserProfile(unittest.TestCase):
 
-    username = 'uname'
-    password = 'pwd'
-    roles = [UserRole.ADMINISTRATOR, UserRole.BASIC]
-
     def setUp(self):
+        self.username = 'uname'
+        self.password = 'pwd'
+        self.roles = [UserRole.ADMINISTRATOR, UserRole.BASIC]
         self.user_profile = UserProfile(self.username, self.password,
                                         self.roles)
 

@@ -7,13 +7,12 @@ from core.main.binaries.binary import Binary
 
 class TestBinary(unittest.TestCase):
 
-    id = 1
-    description = 'description'
-    owner = 'some owner'  # create a mock owner
-    file_extension = 'jar'
-    is_web_binary = False
-
     def setUp(self):
+        self.id = 1
+        self.description = 'description'
+        self.owner = 'some owner'  # create a mock owner
+        self.file_extension = 'jar'
+        self.is_web_binary = False
         self.binary = Binary(None, None, None, None, None)
 
     def tearDown(self):
