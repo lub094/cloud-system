@@ -1,5 +1,4 @@
 import hashlib
-import uuid
 
 
 class UserProfile(object):
@@ -29,7 +28,6 @@ class UserProfile(object):
 
     @staticmethod
     def __hash_password(password):
-        # salt = uuid.uuid4().hex
         hasher = hashlib.md5()
         hasher.update(password.encode('utf-8'))
         return hasher.hexdigest()
@@ -44,5 +42,16 @@ class UserProfile(object):
         hashed_password = self.__hash_password(unhashed_password)
         return self.__password == hashed_password
 
+    def remove_role(self, role):
+        if role in self.__roles:
+            self.__roles.remove(role)
+
+    def remove_roles(self, roles):
+        for role in roles:
+            self.remove_role(role)
+
     def __str__(self):
         return self.__username
+
+    def __eq__(self, other):
+        return self.__dict__ == other.__dict__

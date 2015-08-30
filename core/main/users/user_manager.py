@@ -5,7 +5,7 @@ from core.main.persistence.persistence_validation_error import \
 from core.main.users.user_authentication_error import UserAuthenticationError
 from core.main.users.user_execution_error import UserExecutionError
 from core.main.users.user_profile import UserProfile
-from core.main.users.user_ealidation_error import UserValidationError
+from core.main.users.user_validation_error import UserValidationError
 
 
 class UserManager:
@@ -15,9 +15,9 @@ class UserManager:
     _AUTHENTICATION_FAIL_MESSAGE = 'User authentication failed: '
     _VALIDATION_FAIL_MESSAGE = 'User validation failed: '
 
-    def __init__(self, data_persistence_manager, cloud_service_registry):
+    def __init__(self, data_persistence_manager):  # , cloud_service_registry):
         self.__data_persistence_manager = data_persistence_manager
-        self.__cloud_service_registry = cloud_service_registry
+        # self.__cloud_service_registry = cloud_service_registry
 
     def add_roles_to_user(self, username, roles):
         user = self.read_user(username)

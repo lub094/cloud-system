@@ -1,9 +1,10 @@
 import sys
-from core.main.users.user_role import UserRole
-from core.main.users.user_profile import UserProfile
-sys.path.append('X:\OneDrive\Programming\Code\Python\Projects\CloudSystem\cloud-system')
+sys.path.append(
+    'X:\OneDrive\Programming\Code\Python\Projects\CloudSystem\cloud-system')
 
 import unittest
+from core.main.users.user_role import UserRole
+from core.main.users.user_profile import UserProfile
 
 
 class TestUserProfile(unittest.TestCase):
@@ -46,6 +47,26 @@ class TestUserProfile(unittest.TestCase):
         self.user_profile.add_roles(roles)
 
         self.assertEquals(self.user_profile.get_roles(), roles)
+
+    def test_remove_role(self):
+        role = UserRole.ADMINISTRATOR
+        self.user_profile.remove_role(role)
+
+        self.assertFalse(role in self.user_profile.get_roles())
+
+    def test_remove_role_not_existing(self):
+        role = UserRole.ADMINISTRATOR
+        self.user_profile.remove_role(role)
+        self.user_profile.remove_role(role)
+
+        self.assertFalse(role in self.user_profile.get_roles())
+
+    def test_remove_roles(self):
+        roles = [UserRole.ADMINISTRATOR, UserRole.BASIC]
+        self.user_profile.remove_roles(roles)
+
+        for role in roles:
+            self.assertFalse(role in self.user_profile.get_roles())
 
     def test_str(self):
         self.assertEqual(str(self.user_profile), self.username)
