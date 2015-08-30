@@ -1,11 +1,11 @@
-from core.main.persistence.PersistenceExecutionError import \
+from core.main.persistence.persistence_execution_error import \
     PersistenceExecutionError
-from core.main.persistence.PersistenceValidationError import \
+from core.main.persistence.persistence_validation_error import \
     PersistenceValidationError
-from core.main.users.UserAuthenticationError import UserAuthenticationError
-from core.main.users.UserExecutionError import UserExecutionError
-from core.main.users.UserProfile import UserProfile
-from core.main.users.UserValidationError import UserValidationError
+from core.main.users.user_authentication_error import UserAuthenticationError
+from core.main.users.user_execution_error import UserExecutionError
+from core.main.users.user_profile import UserProfile
+from core.main.users.user_ealidation_error import UserValidationError
 
 
 class UserManager:

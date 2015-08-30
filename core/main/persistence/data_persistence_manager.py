@@ -1,4 +1,4 @@
-from core.main.persistence.PersitenceManager import PersistenceManager
+from core.main.persistence.persitence_manager import PersistenceManager
 
 
 class DataPersistenceManager(PersistenceManager):

@@ -1,4 +1,4 @@
-from core.main.Constants import Constants
+from core.main.constants import Constants
 
 
 class Task:

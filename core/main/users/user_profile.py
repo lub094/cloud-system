@@ -15,8 +15,6 @@ class UserProfile(object):
     def add_roles(self, roles):
         self.__roles += roles
 
-    # def clone(self): pass
-
     def get_password(self):
         return self.__password
 
@@ -31,9 +29,10 @@ class UserProfile(object):
 
     @staticmethod
     def __hash_password(password):
-        salt = uuid.uuid4().hex
-        return hashlib.sha512(
-            password.encode("utf-8") + salt.encode("utf-8")).hexdigest()
+        # salt = uuid.uuid4().hex
+        hasher = hashlib.md5()
+        hasher.update(password.encode('utf-8'))
+        return hasher.hexdigest()
 
     def set_unhashed_password(self, password):
         self.__password = self.__hash_password(password)

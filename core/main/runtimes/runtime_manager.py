@@ -1,13 +1,13 @@
-from core.main.persistence.FilePersistenceManager import FilePersistenceManager
-from core.main.tasks import TaskExecutionError
-from core.main.runtimes.RuntimeExecutionError import RuntimeExecutionError
-from core.main.runtimes.RuntimeValidationError import RuntimeValidationError
-from core.main.persistence.PersistenceValidationError import \
+from core.main.persistence.file_persistence_manager import FilePersistenceManager
+from core.main.tasks import task_execution_error
+from core.main.runtimes.runtime_execution_error import RuntimeExecutionError
+from core.main.runtimes.runtime_validation_error import RuntimeValidationError
+from core.main.persistence.persistence_validation_error import \
     PersistenceValidationError
-from core.main.persistence.PersistenceExecutionError import \
+from core.main.persistence.persistence_execution_error import \
     PersistenceExecutionError
-from core.main.runtimes.Runtimes import Runtime
-from core.main.Constants import Constants
+from core.main.runtimes.runtime import Runtime
+from core.main.constants import Constants
 from os.path import isfile
 import os
 
@@ -41,7 +41,7 @@ class RuntimeManager:
             ).get_all_tasks():
                 if task.get_runtime_id() == runtime_id:
                     return True
-        except TaskExecutionError as e:
+        except task_execution_error as e:
             raise RuntimeExecutionError(
                 'Checking if runtime is part of a task has failed.' + str(e))
 

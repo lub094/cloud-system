@@ -1,5 +1,5 @@
-from core.main.processes.ProcessExecutionError import ProcessExecutionError
-from core.main.persistence.PersistenceExecutionError import \
+from core.main.processes.process_execution_error import ProcessExecutionError
+from core.main.persistence.persistence_execution_error import \
     PersistenceExecutionError
 
 

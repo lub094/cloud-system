@@ -1,11 +1,12 @@
-from core.main.Constants import Constants
-from core.main.persistence import PersistenceValidationError
-from core.main.persistence.PersistenceExecutionError import \
+from core.main.constants import Constants
+from core.main.persistence.persistence_validation_error import \
+    PersistenceValidationError
+from core.main.persistence.persistence_execution_error import \
     PersistenceExecutionError
-from core.main.binaries.BinaryExecutionError import BinaryExecutionError
-from core.main.tasks import TaskExecutionError
-from core.main.binaries.BinaryValidationError import BinaryValidationError
-from core.main.persistence.FilePersistenceManager import FilePersistenceManager
+from core.main.binaries.binary_execution_error import BinaryExecutionError
+from core.main.tasks.task_execution_error import TaskExecutionError
+from core.main.binaries.binary_validation_error import BinaryValidationError
+from core.main.persistence.file_persistence_manager import FilePersistenceManager
 
 
 class BinaryManager:
@@ -13,7 +14,7 @@ class BinaryManager:
     _READ_FAIL_MESSAGE = 'Binary read failed: '
     _DEPLOY_FAIL_MESSAGE = 'Binary deployment failed: '
     _DELETE_FAIL_MESSAGE = 'Binary deletion failed: '
-
+    
     def __init__(self, data_persistence_manager, binaries_location,
                  cloud_service_registry):
         self.__binaries_location = binaries_location
