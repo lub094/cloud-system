@@ -1,4 +1,7 @@
-class PersistenceManager:
+class DbDataPersistenceManager:
+
+    def __init__(self):
+        self.entity_manager = None
 
     def create_element(self):
         pass

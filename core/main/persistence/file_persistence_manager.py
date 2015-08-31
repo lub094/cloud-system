@@ -1,7 +1,4 @@
-from core.main.persistence.persistence_manager import PersistenceManager
-
-
-class FilePersistenceManager(PersistenceManager):
+class FilePersistenceManager:
 
     def __init__(self):
         self.files_location = ''
