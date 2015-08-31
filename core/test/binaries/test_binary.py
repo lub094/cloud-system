@@ -51,4 +51,5 @@ class TestBinary(unittest.TestCase):
     def test_str(self):
         self.assertEqual(str(self.binary), 'None None None None')
 
-unittest.main()
+if __name__ == '__main__':
+    unittest.main()

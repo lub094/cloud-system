@@ -53,4 +53,5 @@ class TestTask(unittest.TestCase):
     def test_is_web_task(self):
         self.assertEqual(self.task.is_web_task(), False)
 
-unittest.main()
+if __name__ == '__main__':
+    unittest.main()

@@ -46,7 +46,7 @@ class TestUserProfile(unittest.TestCase):
         self.user_profile.set_roles([])
         self.user_profile.add_roles(roles)
 
-        self.assertEquals(self.user_profile.get_roles(), roles)
+        self.assertEqual(self.user_profile.get_roles(), roles)
 
     def test_remove_role(self):
         role = UserRole.ADMINISTRATOR
@@ -71,4 +71,5 @@ class TestUserProfile(unittest.TestCase):
     def test_str(self):
         self.assertEqual(str(self.user_profile), self.username)
 
-unittest.main()
+if __name__ == '__main__':
+    unittest.main()

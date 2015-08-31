@@ -1,41 +1,13 @@
 import sys
 from core.main.users.user_validation_error import UserValidationError
+from core.main.persistence.ram_data_persistence_manager import RamDataPersistenceManager
 sys.path.append(
     'X:\OneDrive\Programming\Code\Python\Projects\CloudSystem\cloud-system')
 
-from core.main.persistence.persistence_validation_error import \
-    PersistenceValidationError
 import unittest
 from core.main.users.user_manager import UserManager
 from core.main.users.user_role import UserRole
 from core.main.users.user_profile import UserProfile
-
-
-class DataPersistenceManagerStub:
-
-    def __init__(self):
-        self.__elements = {}
-
-    def update_element(self, key, element):
-        if key in self.__elements:
-            self.__elements[key] = element
-        else:
-            raise PersistenceValidationError('Element does not exist')
-
-    def read_element(self, key):
-        try:
-            return self.__elements[key]
-        except:
-            raise UserValidationError('Element does not exist')
-
-    def create_element(self, key, element):
-        self.__elements[key] = element
-
-    def delete_element(self, key):
-        del self.__elements[key]
-
-    def get_all_elements(self):
-        return self.__elements.values()
 
 
 class TestUserManager(unittest.TestCase):
@@ -44,7 +16,7 @@ class TestUserManager(unittest.TestCase):
         self.username = 'lubo'
         self.password = 'pwd'
         self.roles = [UserRole.ADMINISTRATOR]
-        self.user_manager = UserManager(DataPersistenceManagerStub())
+        self.user_manager = UserManager(RamDataPersistenceManager())
         self.user_manager.create_user(self.username, self.password, self.roles)
 
     def test_read_user(self):
@@ -114,4 +86,5 @@ class TestUserManager(unittest.TestCase):
             self.user_manager.verify_user_rights(
                 self.username, self.password, UserRole.BASIC)
 
-unittest.main()
+if __name__ == '__main__':
+    unittest.main()

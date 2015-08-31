@@ -15,9 +15,8 @@ class UserManager:
     _AUTHENTICATION_FAIL_MESSAGE = 'User authentication failed: '
     _VALIDATION_FAIL_MESSAGE = 'User validation failed: '
 
-    def __init__(self, data_persistence_manager):  # , cloud_service_registry):
+    def __init__(self, data_persistence_manager): 
         self.__data_persistence_manager = data_persistence_manager
-        # self.__cloud_service_registry = cloud_service_registry
 
     def add_roles_to_user(self, username, roles):
         user = self.read_user(username)
@@ -82,16 +81,7 @@ class UserManager:
         raise UserValidationError(
             self._CREATION_FAIL_MESSAGE + "user already exists.")
 
-    def _user_is_owner(self, username):
-        pass
-
     def delete_user(self, username):
-        if self._user_is_owner(username):
-            raise UserExecutionError(
-                self._DELETION_FAIL_MESSAGE +
-                "Can't delete a user that owns files."
-            )
-
         try:
             return self.__data_persistence_manager.delete_element(username)
         except PersistenceValidationError as e:
@@ -129,5 +119,6 @@ class UserManager:
 
         if not user.is_in_role(role):
             raise UserValidationError(
-                self._VALIDATION_FAIL_MESSAGE +
+                self._VALIDATION_FAIL_MESSAGE + 
                 "The user doesn't have the rights to do this action.")
+

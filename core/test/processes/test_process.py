@@ -62,4 +62,5 @@ class TestProcess(unittest.TestCase):
         self.process.set_task(self.task)
         self.assertEqual(str(self.process), 'None WEB 0 None')
 
-unittest.main()
+if __name__ == '__main__':
+    unittest.main()
