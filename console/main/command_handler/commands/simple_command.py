@@ -1,4 +1,4 @@
-from command_handler.commands.Command import Command
+from console.main.command_handler.commands.command import Command
 
 
 class SimpleCommand(Command):
