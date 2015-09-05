@@ -2,15 +2,15 @@ from sys import platform
 
 from core.main.linux_cloud_service_registry import LinuxCloudServiceRegistry
 from console.main.program_cannot_start_error import ProgramCannotStartError
-from core.main.windows_cloud_service_registry import WindowsCloudServiceRegistry
+from core.main.windows_cloud_service_registry import \
+    WindowsCloudServiceRegistry
+from console.main.cloud_system_app import CloudSystemApp
+from core.main.persistence.ram_data_persistence_manager import \
+    RamDataPersistenceManager
 
 if platform.startswith('win'):
     cloud_service_registry = WindowsCloudServiceRegistry(
-        None,
-        None,
-        None,
-        None,
-        None)
+        RamDataPersistenceManager())
 elif platform.startswith('linux'):
     cloud_service_registry = LinuxCloudServiceRegistry(
         None,
@@ -22,4 +22,5 @@ else:
 
 
 def run_program():
-    cloud_service_registry.say_hello()
+    cloud_system_app = CloudSystemApp(cloud_service_registry)
+    cloud_system_app.run_interactive_mode()
