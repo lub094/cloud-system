@@ -8,7 +8,7 @@ class CloudSystemApp:
         self.__cloud_service_registry = cloud_service_registry
 
     def run_interactive_mode(self):
-        print(' == STARTING INTERACTIVE MODE == ')
+        print(' == STARTING INTERACTIVE MODE == \n')
 
         command_line_handler = CommandLineHandler(
             self.__cloud_service_registry)
@@ -20,4 +20,4 @@ class CloudSystemApp:
             args = input('\ninput command: ').split(sep=' ')
             command_line_handler.execute(args)
 
-        print(' == EXITING INTERACTIVE MODE ==')
+        print('\n == EXITING INTERACTIVE MODE ==')

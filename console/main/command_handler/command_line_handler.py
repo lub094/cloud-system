@@ -39,8 +39,7 @@ class CommandLineHandler:
             users = self.cloud_service_registry.get_user_manager(
             ).get_all_users()
 
-            print('Users:')
-            print('=======================================')
+            print('\n=======================================')
             print('Username | Roles')
             print('---------------------------------------')
 

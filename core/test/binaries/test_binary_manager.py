@@ -2,7 +2,6 @@ import unittest
 from mock import Mock
 from core.main.binaries.binary_manager import BinaryManager
 from core.main.constants import Constants
-from core.main.binaries.binary_validation_error import BinaryValidationError
 
 
 class Test(unittest.TestCase):

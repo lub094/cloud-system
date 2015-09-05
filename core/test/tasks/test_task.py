@@ -22,7 +22,7 @@ class TestTask(unittest.TestCase):
     def setUp(self):
         self.id = 1
         self.description = 'description'
-        self.owner = 'some owner'  # create a mock owner
+        self.owner = 'some owner'
         self.binary = BinaryMock()  # create a mock task trough a framework
         self.runtime = RuntimeMock()  # create a mock runtime
         self.task = Task(self.id, self.runtime, self.binary, self.description,
