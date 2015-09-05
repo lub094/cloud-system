@@ -67,10 +67,12 @@ class WindowsTaskManager:
                                                                new_task)
             except PersistenceExecutionError as e:
                 os.remove(script_file)
-                raise task_execution_error(self._CREATION_FAIL_MESSAGE + str(e))
+                raise task_execution_error(
+                    self._CREATION_FAIL_MESSAGE + str(e))
             except PersistenceValidationError as e:
                 os.remove(script_file)
-                raise task_validation_error(self._CREATION_FAIL_MESSAGE + str(e))
+                raise task_validation_error(
+                    self._CREATION_FAIL_MESSAGE + str(e))
 
             return task_id
         except (BinaryValidationError, RuntimeValidationError) as e:
@@ -168,5 +170,4 @@ class WindowsTaskManager:
             raise task_validation_error(self._UPDATE_FAIL_MESSAGE + str(e))
         except (RuntimeExecutionError, BinaryExecutionError) as e:
             raise task_execution_error(self._UPDATE_FAIL_MESSAGE +
-                                     'Data could not be read.')
-
+                                       'Data could not be read.')

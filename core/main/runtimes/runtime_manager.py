@@ -1,4 +1,5 @@
-from core.main.persistence.file_persistence_manager import FilePersistenceManager
+from core.main.persistence.file_persistence_manager import \
+    FilePersistenceManager
 from core.main.tasks import task_execution_error
 from core.main.runtimes.runtime_execution_error import RuntimeExecutionError
 from core.main.runtimes.runtime_validation_error import RuntimeValidationError

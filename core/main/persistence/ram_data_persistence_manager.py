@@ -1,4 +1,5 @@
-from core.main.persistence.persistence_validation_error import PersistenceValidationError
+from core.main.persistence.persistence_validation_error import \
+    PersistenceValidationError
 from core.main.users.user_validation_error import UserValidationError
 
 

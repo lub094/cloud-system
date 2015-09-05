@@ -4,9 +4,7 @@ from core.main.persistence.persistence_validation_error import \
 from core.main.persistence.persistence_execution_error import \
     PersistenceExecutionError
 from core.main.binaries.binary_execution_error import BinaryExecutionError
-from core.main.tasks.task_execution_error import TaskExecutionError
 from core.main.binaries.binary_validation_error import BinaryValidationError
-from core.main.persistence.file_persistence_manager import FilePersistenceManager
 
 
 class BinaryManager:
@@ -14,14 +12,12 @@ class BinaryManager:
     _READ_FAIL_MESSAGE = 'Binary read failed: '
     _DEPLOY_FAIL_MESSAGE = 'Binary deployment failed: '
     _DELETE_FAIL_MESSAGE = 'Binary deletion failed: '
-    
-    def __init__(self, data_persistence_manager, binaries_location,
-                 cloud_service_registry):
+
+    def __init__(self, data_persistence_manager, file_persistence_manager,
+                 binaries_location):
         self.__binaries_location = binaries_location
-        self.__cloud_service_registry = cloud_service_registry
         self.__data_persistence_manager = data_persistence_manager
-        self.__file_persistence_manager = FilePersistenceManager(
-            binaries_location)
+        self.__file_persistence_manager = file_persistence_manager
 
     def _get_binary_file_name(self, binary):
         return Constants.BINARY_FILE_FORMAT.format(
@@ -45,18 +41,6 @@ class BinaryManager:
             raise BinaryExecutionError(self._DEPLOY_FAIL_MESSAGE + str(e))
         except PersistenceValidationError as e:
             raise BinaryValidationError(self._DEPLOY_FAIL_MESSAGE + str(e))
-
-    def _used_by_task(self, binary_id):
-        try:
-            for task in self.__cloud_service_registry.get_task_manager(
-            ).get_all_tasks():
-                if task.get_binary_id() == binary_id:
-                    return True
-
-        except TaskExecutionError:
-            return True
-
-        return False
 
     def _create_binary(self, binary, source_file):
         try:
@@ -94,15 +78,11 @@ class BinaryManager:
                                             'Binaries can only be deleted by \
                                             their owner.')
 
-            if self._used_by_task(binary_id):
-                raise BinaryValidationError(self._DELETE_FAIL_MESSAGE +
-                                            'Can\'t delete binary that is a \
-                                            part of a task')
             binary_file_name = self._get_binary_file_name(binary)
             reversible_operation = self.__file_persistence_manager. \
                 create_reversible_operation(binary_file_name)
 
-            reversible_operation.delte_element()
+            reversible_operation.delete_element()
             try:
                 self.__file_persistence_manager.delete_element(binary_id)
             except (PersistenceExecutionError, PersistenceValidationError) as \

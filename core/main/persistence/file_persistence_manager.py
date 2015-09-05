@@ -1,7 +1,7 @@
 class FilePersistenceManager:
 
-    def __init__(self):
-        self.files_location = ''
+    def __init__(self, files_location):
+        self.files_location = files_location
 
     def create_reversible_operation(self):
         pass
