@@ -1,11 +1,9 @@
-import sys
-sys.path.append('X:\OneDrive\Programming\Code\Python\Projects\CloudSystem\cloud-system')
-
 import unittest
 from core.main.processes.process import Process
 
 
 class TaskMock:
+
     def is_web_task(self):
         return True
 

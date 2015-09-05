@@ -1,10 +1,7 @@
-import sys
-from core.main.users.user_validation_error import UserValidationError
-from core.main.persistence.ram_data_persistence_manager import RamDataPersistenceManager
-sys.path.append(
-    'X:\OneDrive\Programming\Code\Python\Projects\CloudSystem\cloud-system')
-
 import unittest
+from core.main.users.user_validation_error import UserValidationError
+from core.main.persistence.ram_data_persistence_manager import \
+    RamDataPersistenceManager
 from core.main.users.user_manager import UserManager
 from core.main.users.user_role import UserRole
 from core.main.users.user_profile import UserProfile

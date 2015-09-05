@@ -1,7 +1,3 @@
-import sys
-sys.path.append(
-    'X:\OneDrive\Programming\Code\Python\Projects\CloudSystem\cloud-system')
-
 import unittest
 from core.main.users.user_role import UserRole
 from core.main.users.user_profile import UserProfile
@@ -69,7 +65,14 @@ class TestUserProfile(unittest.TestCase):
             self.assertFalse(role in self.user_profile.get_roles())
 
     def test_str(self):
-        self.assertEqual(str(self.user_profile), self.username)
+        expected = self.username + '\t | '
+
+        for role in self.roles:
+            expected += role.name + ', '
+
+        expected = expected[:-2]
+
+        self.assertEqual(str(self.user_profile), expected)
 
 if __name__ == '__main__':
     unittest.main()

@@ -51,7 +51,12 @@ class UserProfile(object):
             self.remove_role(role)
 
     def __str__(self):
-        return self.__username
+        result = self.__username + '\t | '
+
+        for role in self.__roles:
+            result += role.name + ', '
+
+        return result[:-2]
 
     def __eq__(self, other):
         return self.__dict__ == other.__dict__

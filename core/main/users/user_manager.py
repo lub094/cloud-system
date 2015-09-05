@@ -15,7 +15,7 @@ class UserManager:
     _AUTHENTICATION_FAIL_MESSAGE = 'User authentication failed: '
     _VALIDATION_FAIL_MESSAGE = 'User validation failed: '
 
-    def __init__(self, data_persistence_manager): 
+    def __init__(self, data_persistence_manager):
         self.__data_persistence_manager = data_persistence_manager
 
     def add_roles_to_user(self, username, roles):
@@ -72,9 +72,8 @@ class UserManager:
             try:
                 return self.__data_persistence_manager.create_element(username,
                                                                       new_user)
-            except (
-                    PersistenceValidationError,
-                    PersistenceExecutionError) as e:
+            except (PersistenceValidationError, PersistenceExecutionError) as \
+                    e:
                 raise UserExecutionError(
                     self._CREATION_FAIL_MESSAGE + str(e))
 
@@ -118,7 +117,6 @@ class UserManager:
                 self._AUTHENTICATION_FAIL_MESSAGE + 'Incorrect password.')
 
         if not user.is_in_role(role):
-            raise UserValidationError(
-                self._VALIDATION_FAIL_MESSAGE + 
-                "The user doesn't have the rights to do this action.")
-
+            raise UserValidationError(self._VALIDATION_FAIL_MESSAGE +
+                                      "The user doesn't have the rights to do \
+                                      this action.")

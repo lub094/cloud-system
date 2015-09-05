@@ -1,11 +1,9 @@
-import sys
-sys.path.append('X:\OneDrive\Programming\Code\Python\Projects\CloudSystem\cloud-system')
-
 import unittest
 from core.main.tasks.task import Task
 
 
 class BinaryMock:
+
     def get_id(self):
         return 0
 
@@ -14,6 +12,7 @@ class BinaryMock:
 
 
 class RuntimeMock:
+
     def get_id(self):
         return 1
 

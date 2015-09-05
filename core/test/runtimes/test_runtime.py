@@ -1,6 +1,3 @@
-import sys
-sys.path.append('X:\OneDrive\Programming\Code\Python\Projects\CloudSystem\cloud-system')
-
 import unittest
 from core.main.runtimes.runtime import Runtime
 
